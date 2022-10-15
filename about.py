@@ -1,5 +1,5 @@
 import streamlit as st
-import pandas as
+import pandas as pd
 import numpy as np
 Argentina= pd.read_csv('sources\Worldcups_History_Argentina.csv').drop(['Squad','Comp','Top Team Scorer', 'Goalkeeper', 'Notes'],axis=1)
 Australia =pd.read_csv('sources\Worldcups_History_Australia.csv').drop(['Squad','Comp','Top Team Scorer', 'Goalkeeper', 'Notes'],axis=1)
