@@ -41,30 +41,38 @@ player_trophies = pd.read_csv(r'./sources//award_winners.csv')
 world_cup2022= pd.concat([Argentina, Australia, Belgium, Brazil, cameroon, Canada, Costarica, Croatia, Denemark, Ecuador, England, France, Germany, Ghana, Iran, Japan, Korea, Mexico, Morocco, Netherlands, Poland, Portugal, Qatar, Saudi_Arabia, Senegal, Serbia, Spain, Switzerland, Tunisia, United_States, Uruguay, Wales]).drop([0],axis=0).reset_index()
 world_cup2022.Squad =world_cup2022.Squad.str.replace('West Germany','Germany')
 ##
-statistics=world_cup2022.groupby('Squad').sum().reset_index()
+st.subheader("world cup match history")
+statistics=world_cup2022.groupby('Squad').sum().reset_index().head(10)
 statistics.drop('Season',axis=1,inplace=True)
 n = statistics.sort_values(by='MP',ascending=False).reset_index().drop('index',axis=1)
-figure1 = px.histogram(n , x="Squad" , y="MP" ,color= "W", title="Matches Played")
+figure1 = px.histogram(n , x="Squad" , y=["MP", "W","L"] , barmode="group")
 st.plotly_chart(figure1)
 ##
-st.markdown('Which country scored most goales in world cup')
+st.subheader('world cup most goals history ')
 best_attack = statistics.sort_values(by='GF',ascending=False)[['Squad','GF']].reset_index()
 best_attack.drop('index',axis=1,inplace=True)
-st.dataframe(best_attack)
-figure2 = px.histogram(best_attack , x="Squad" , y="GF" , title="Best Attack in World Cup")
-st.plotly_chart(figure2)
+col1 , col2 = st.columns(2)
+with col1:
+    st.dataframe(best_attack)
+with col2:
+    figure2 = px.histogram(best_attack , x="Squad" , y="GF" , title="Best Attack in World Cup")
+    st.plotly_chart(figure2)
+
 ##
-st.markdown('Which country has the best defense in world cup')
+st.subheader('Best defense in world cup')
 statistics ['avg_recived_goals_per_match'] = statistics['GA'] / statistics['MP']
 best_defense = statistics.sort_values(by='avg_recived_goals_per_match',ascending=True)[['Squad','avg_recived_goals_per_match']].reset_index()
 best_defense.drop('index',axis=1,inplace=True)
-st.dataframe(best_defense)
-figure3 = px.histogram(best_defense , x="Squad" , y="avg_recived_goals_per_match" , title="Best Defense in World Cup")
-st.plotly_chart(figure3)
+col1 , col2 = st.columns(2)
+with col1:
+    st.dataframe(best_defense)
+with col2:
+    figure3 = px.histogram(best_defense , x="Squad" , y="avg_recived_goals_per_match" , title="Best Defense in World Cup")
+    st.plotly_chart(figure3)
 
 ## goals
-st.markdown('what is goal statistics in world cup')
-goals = pd.read_csv(r'./sources//goals.csv')
+st.subheader('what is goal statistics in world cup')
+goals = pd.read_csv(r'F:\AI corse\Compressed\datasets\Datasets\world cup 2022\New folder\goals.csv')
 
 goals_on_first_half = goals[(goals['minute_regulation']>0) & (goals['minute_regulation']<=45)].reset_index()
 goals_on_first_half = goals_on_first_half.count()[0]
