@@ -72,7 +72,7 @@ with col2:
 
 ## goals
 st.subheader('what is goal statistics in world cup')
-goals = pd.read_csv(r'F:\AI corse\Compressed\datasets\Datasets\world cup 2022\New folder\goals.csv')
+goals = pd.read_csv('./sources/goals.csv')
 
 goals_on_first_half = goals[(goals['minute_regulation']>0) & (goals['minute_regulation']<=45)].reset_index()
 goals_on_first_half = goals_on_first_half.count()[0]
