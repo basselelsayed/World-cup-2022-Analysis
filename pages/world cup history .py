@@ -41,119 +41,193 @@ world_cup2022.Squad =world_cup2022.Squad.str.replace('West Germany','Germany')
 ## all countries history
 countries = ['Argentina', 'Australia', 'Belgium', 'Brazil', 'cameroon', 'Canada', 'Costarica', 'Croatia', 'Denemark', 'Ecuador', 'England', 'France', 'Germany', 'Ghana', 'Iran', 'Japan', 'Korea', 'Mexico', 'Morocco', 'Netherlands', 'Poland', 'Portugal', 'Qatar', 'Saudi_Arabia', 'Senegal', 'Serbia', 'Spain', 'Switzerland', 'Tunisia', 'United_States', 'Uruguay', 'Wales']
 st.subheader('Here  is  the  history of all 32 countries')
-selection = st.selectbox('please select a country', countries)
-if selection == 'Argentina': 
-    st.write(Argentina)
-elif selection == 'Australia':
-    st.write(Australia) 
-elif selection == 'Belgium':
-    st.write(Belgium)       
-elif selection == 'Brazil':
-    st.write(Brazil)        
-elif selection == 'cameroon':
-    st.write(cameroon)
-elif selection == 'Canada':
-    st.write(Canada)
-elif selection == 'Costarica':
-    st.write(Costarica)
-elif selection == 'Croatia':
-    st.write(Croatia)
-elif selection == 'Denemark':
-    st.write(Denemark)
-elif selection == 'Ecuador':
-    st.write(Ecuador)
-elif selection == 'England':
-    st.write(England)
-elif selection == 'France':
-    st.write(France)
-elif selection == 'Germany':
-    st.write(Germany)
-elif selection == 'Ghana':
-    st.write(Ghana)
-elif selection == 'Iran':
-    st.write(Iran)
-elif selection == 'Japan':
-    st.write(Japan)
-elif selection == 'Korea':
-    st.write(Korea)
-elif selection == 'Mexico':
-    st.write(Mexico)
-elif selection == 'Morocco':
-    st.write(Morocco)
-elif selection == 'Netherlands':
-    st.write(Netherlands)
-elif selection == 'Poland':
-    st.write(Poland)
-elif selection == 'Portugal':
-    st.write(Portugal)
-elif selection == 'Qatar':
-    st.write(Qatar)
-elif selection == 'Saudi_Arabia':
-    st.write(Saudi_Arabia)
-elif selection == 'Senegal':
-    st.write(Senegal)
-elif selection == 'Serbia':
-    st.write(Serbia)
-elif selection == 'Spain':
-    st.write(Spain)
-elif selection == 'Switzerland':
-    st.write(Switzerland)
-elif selection == 'Tunisia':
-    st.write(Tunisia)
-elif selection == 'United_States':
-    st.write(United_States)
-elif selection == 'Uruguay':
-    st.write(Uruguay)
-elif selection == 'Wales':
-    st.write(Wales)
+col1 , col2 = st.columns([5,1])
+with col1:
+    selection = st.selectbox('please select a country', countries)
+    
+    if selection == 'Argentina':
+        st.write(Argentina)
+    elif selection == 'Australia':
+        st.write(Australia) 
+    elif selection == 'Belgium':
+        st.write(Belgium)       
+    elif selection == 'Brazil':
+        st.write(Brazil)        
+    elif selection == 'cameroon':
+        st.write(cameroon)
+    elif selection == 'Canada':
+        st.write(Canada)
+    elif selection == 'Costarica':
+        st.write(Costarica)
+    elif selection == 'Croatia':
+        st.write(Croatia)
+    elif selection == 'Denemark':
+        st.write(Denemark)
+    elif selection == 'Ecuador':
+        st.write(Ecuador)
+    elif selection == 'England':
+        st.write(England)
+    elif selection == 'France':
+        st.write(France)
+    elif selection == 'Germany':
+        st.write(Germany)
+    elif selection == 'Ghana':
+        st.write(Ghana)
+    elif selection == 'Iran':
+        st.write(Iran)
+    elif selection == 'Japan':
+        st.write(Japan)
+    elif selection == 'Korea':
+        st.write(Korea)
+    elif selection == 'Mexico':
+        st.write(Mexico)
+    elif selection == 'Morocco':
+        st.write(Morocco)
+    elif selection == 'Netherlands':
+        st.write(Netherlands)
+    elif selection == 'Poland':
+        st.write(Poland)
+    elif selection == 'Portugal':
+        st.write(Portugal)
+    elif selection == 'Qatar':
+        st.write(Qatar)
+    elif selection == 'Saudi_Arabia':
+        st.write(Saudi_Arabia)
+    elif selection == 'Senegal':
+        st.write(Senegal)
+    elif selection == 'Serbia':
+        st.write(Serbia)
+    elif selection == 'Spain':
+        st.write(Spain)
+    elif selection == 'Switzerland':
+        st.write(Switzerland)
+    elif selection == 'Tunisia':
+        st.write(Tunisia)
+    elif selection == 'United_States':
+        st.write(United_States)
+    elif selection == 'Uruguay':
+        st.write(Uruguay)
+    elif selection == 'Wales':
+        st.write(Wales)
+
+with col2:
+    st.write('')
+    st.write('')
+    st.write('')
+    st.write('')
+    st.write('')
+    st.write('')
+
+    st.write("MP = matchplayed") 
+    st.write("W = win")
+    st.write("D = draw")
+    st.write("L = lose")
+    st.write("GF = goal for")
+    st.write("GA = goal against")
+    st.write("GD = goal difference")
+    st.write("PTS = points")
+ 
 
 ##countries statistics
 st.subheader(' Countries Statistics')
 statistics=world_cup2022.groupby('Squad').sum().reset_index()
 statistics.drop(['Season', 'index'] , axis=1,inplace=True)
-st.dataframe(statistics)
+
+col1 , col2 = st.columns([5,1])
+with col1:
+    st.dataframe(statistics)
+with col2:
+   
+    st.write("MP = matchplayed") 
+    st.write("W = win")
+    st.write("D = draw")
+    st.write("L = lose")
+    st.write("GF = goal for")
+    st.write("GA = goal against")
+    st.write("GD = goal difference")
+    st.write("PTS = points")
+
+
+
 
 ##most participants in worldcup
-nopiwc = world_cup2022[['Squad','Season']].groupby('Squad').count().sort_values(by='Season',ascending=False).reset_index()
-st.dataframe(nopiwc)
-figure0 = px.histogram(nopiwc , x="Squad" , y="Season" , title="most countries participate in world cup")
-st.plotly_chart(figure0)
+st.subheader('History of countries participate in the world cup ')
+col1 , col2 = st.columns([1,2])
+with col1:
+    
+    nopiwc = world_cup2022[['Squad','Season']].groupby('Squad').count().sort_values(by='Season',ascending=False).reset_index().head(10)
+    st.dataframe(nopiwc)
+with col2:
+
+    figure0 = px.funnel(nopiwc , x="Squad" , y="Season")
+    st.plotly_chart(figure0)
+
 
 
 
 ##1st place
 table_1st = world_cup2022[world_cup2022['LgRank']=='1st'].Squad.value_counts().reset_index()
 most_1st_years =world_cup2022[(world_cup2022['LgRank']=='1st')& (world_cup2022['Squad']=='Brazil') ]["Season"].sort_values(ascending=True).tolist()
-st.subheader('Which country has won FIFA World Cup the most time?')
-st.write('Brazil has the most World Cup soccer titles with 5 titles'  ,' in 1958 , 1962 , 1970 , 1994, 2002'  )
-st.dataframe(table_1st)
-first = px.bar(table_1st , x='index', y='Squad' , title='World Cup winners 1930-2018')
-st.plotly_chart(first)
+st.subheader('History of champions in the world cup ')
+col1 , col2 = st.columns([1,2])
+with col1:
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.dataframe(table_1st)
+with col2:
+    first = px.bar(table_1st , x='index', y='Squad' )
+    st.plotly_chart(first)
 
 ##2nd place
 table_2nd = world_cup2022[world_cup2022['LgRank']=='2nd'].Squad.value_counts().reset_index()
 most_2nd_years =world_cup2022[(world_cup2022['LgRank']=='2nd')& (world_cup2022['Squad']=='Germany') ]["Season"].sort_values(ascending=True).tolist()
-st.subheader('Which country has been the runner-up(2nd) the most time?')
-st.write('Germany has been the runner-up 4 times'  ,' in 1966, 1982, 1986, 2002 '  )
-st.dataframe(table_2nd)
-second = px.bar(table_2nd , x='index', y='Squad' , title='World Cup runner-up 1930-2018')
-st.plotly_chart(second)
+st.subheader('History of countries runner-up in the world cup ')
+col1 , col2 = st.columns([1,2])
+with col1:
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.dataframe(table_2nd)
+with col2:
+    second = px.bar(table_2nd , x='index', y='Squad' )
+    st.plotly_chart(second)
 
 
 ## 3rd place
 table_3rd = world_cup2022[world_cup2022['LgRank']=='3rd'].Squad.value_counts().reset_index()
 most_3rd_years =world_cup2022[(world_cup2022['LgRank']=='3rd')& (world_cup2022['Squad']=='Italy') ]["Season"].sort_values(ascending=True).tolist()
-st.subheader('Which country has been the third place the most time?')
-st.write('Germany has been the third place 4 times'  ,' in 1934, 1970, 2006, 2010 '  )
-st.dataframe(table_3rd)
-third = px.bar(table_3rd , x='index', y='Squad' , title='World Cup third place 1930-2018')
-st.plotly_chart(third)
+st.subheader('History of countries third place in the world cup ')
+col1 , col2 = st.columns([1,2])
+with col1:
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    
+    st.dataframe(table_3rd)
+with col2:
+    third = px.bar(table_3rd , x='index', y='Squad' )
+    st.plotly_chart(third)
 
 ##4th place
 table_4th = world_cup2022[world_cup2022['LgRank']=='4th'].Squad.value_counts().reset_index()
 most_4th_years =world_cup2022[(world_cup2022['LgRank']=='4th')& (world_cup2022['Squad']=='Netherlands') ]["Season"].sort_values(ascending=True).tolist()
-st.subheader('Which country has been the fourth place the most time?')
-st.write('Netherlands has been the fourth place 3 times'  ,' 1954, 1970, 2010 '  )
-st.dataframe(table_4th)
-fourth = px.bar(table_4th , x='index', y='Squad' , title='World Cup fourth place 1930-2018')
-st.plotly_chart(fourth)
+st.subheader('History of countries fourth place in the world cup ')
+col1 , col2 = st.columns([1,2])
+with col1:
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    
+    st.dataframe(table_4th)
+with col2:
+    fourth = px.bar(table_4th , x='index', y='Squad' , title='World Cup fourth place 1930-2018')
+    st.plotly_chart(fourth)
