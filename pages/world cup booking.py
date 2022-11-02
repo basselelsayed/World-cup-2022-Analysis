@@ -42,8 +42,8 @@ world_cup2022.Squad =world_cup2022.Squad.str.replace('West Germany','Germany')
 
 ## merging data
 
-booking = pd.read_csv(r'F:\AI corse\Compressed\datasets\Datasets\world cup 2022\New folder\bookings.csv')
-team_name = pd.read_csv(r'F:\AI corse\Compressed\datasets\Datasets\world cup 2022\New folder\teams.csv')
+booking = pd.read_csv(r'F:/AI corse/Compressed/datasets/Datasets/world cup 2022/New folder/bookings.csv')
+team_name = pd.read_csv(r'F:/AI corse/Compressed/datasets/Datasets/world cup 2022/New folder/teams.csv')
 world_cup_booking = pd.merge(booking,team_name,how='outer',on='team_id')
 world_cup_booking['fullname'] = world_cup_booking['given_name'] + ' ' + world_cup_booking['family_name']
 
