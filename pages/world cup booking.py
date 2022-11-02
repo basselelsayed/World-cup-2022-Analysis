@@ -39,10 +39,11 @@ player_trophies = pd.read_csv(r'./sources//award_winners.csv')
 world_cup2022= pd.concat([Argentina, Australia, Belgium, Brazil, cameroon, Canada, Costarica, Croatia, Denemark, Ecuador, England, France, Germany, Ghana, Iran, Japan, Korea, Mexico, Morocco, Netherlands, Poland, Portugal, Qatar, Saudi_Arabia, Senegal, Serbia, Spain, Switzerland, Tunisia, United_States, Uruguay, Wales]).drop([0],axis=0).reset_index()
 world_cup2022.Squad =world_cup2022.Squad.str.replace('West Germany','Germany')
 
+
 ## merging data
 
-booking = pd.read_csv(r'./sources/bookings.csv')
-team_name = pd.read_csv(r'./sources/teams.csv')
+booking = pd.read_csv(r'F:\AI corse\Compressed\datasets\Datasets\world cup 2022\New folder\bookings.csv')
+team_name = pd.read_csv(r'F:\AI corse\Compressed\datasets\Datasets\world cup 2022\New folder\teams.csv')
 world_cup_booking = pd.merge(booking,team_name,how='outer',on='team_id')
 world_cup_booking['fullname'] = world_cup_booking['given_name'] + ' ' + world_cup_booking['family_name']
 
@@ -50,17 +51,17 @@ world_cup_booking['fullname'] = world_cup_booking['given_name'] + ' ' + world_cu
 world_cup_booking = world_cup_booking[['fullname','yellow_card','red_card', 'team_name_y']]
 yellow_cards = world_cup_booking[['team_name_y', 'fullname']][world_cup_booking['yellow_card'] == 1]
 red_cards = world_cup_booking[['team_name_y', 'fullname']][world_cup_booking['red_card'] == 1].reset_index().drop(['index'],axis=1)
-most_country_yc = yellow_cards['team_name_y' ].value_counts().reset_index()
-most_country_rc = red_cards['team_name_y' ].value_counts().reset_index()
+most_country_yc = yellow_cards['team_name_y' ].value_counts().reset_index().head(10)
+most_country_rc = red_cards['team_name_y' ].value_counts().reset_index().head(10)
 
 
 ## plotting data
-st.markdown('who is the most countries have yellow cards')
+st.subheader('who is the most countries have yellow cards')
 st.dataframe(yellow_cards)
-figure10 = px.histogram(most_country_yc , x="index" ,y = "team_name_y"  , title="Most Yellow Cards")
+figure10 = px.funnel(most_country_yc , x="index" ,y = "team_name_y"  )
 st.plotly_chart(figure10)
 
-st.markdown('who is the most countries have red cards')
+st.subheader('who is the most countries have red cards')
 st.dataframe(red_cards)
-figure11 = px.histogram(most_country_rc , x="index" ,y = "team_name_y"  , title="Most Red Cards")
+figure11 = px.funnel(most_country_rc , x="index" ,y = "team_name_y")
 st.plotly_chart(figure11)
