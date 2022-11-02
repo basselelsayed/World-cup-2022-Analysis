@@ -36,6 +36,7 @@ Wales = pd.read_csv('sources/Worldcups_History_Wales.csv').drop(['Squad','Comp',
 
 
 
+st.set_page_config(page_title='World Cup 2022', page_icon='🏆', layout='wide', initial_sidebar_state='auto')
 
 
 
@@ -47,4 +48,23 @@ st.markdown('''the analysis is based on the data of fifa world cup 2022 particip
 countries only which are 32 countries so some countries are not included in 
 this analysis which are not participating in world cup 2022\n''')
 
+st.markdown('''The FIFA World Cup, often simply called the World Cup, is an international
+ association football competition contested by the senior men's national teams of the 
+ members of the Fédération Internationale de Football Association (FIFA), the sport's 
+ global governing body. The championship has been awarded every four years since the 
+ inaugural tournament in 1930, except in 1942 and 1946 when it was not held because 
+ of the Second World War The current format involves a qualification phase, which takes 
+ place over the preceding three years, to determine which teams qualify for the tournament 
+ phase. In the tournament phase, 32 teams, including the automatically qualifying host 
+ nation(s), compete for the title at venues within the host nation(s) over about a month.''')
 
+
+
+url1 ='https://www.kaggle.com/datasets/muhammad4hmed/2022-fifa-worldcup-qatar-full-live-dataset'
+url2 = 'https://www.kaggle.com/datasets/joshfjelstul/world-cup-database'
+
+if st.button('Reference 1 '):
+    webbrowser.open_new_tab(url1)
+
+if st.button('Reference 2 '):
+    webbrowser.open_new_tab(url2)
