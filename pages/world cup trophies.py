@@ -46,39 +46,65 @@ player_trophies['given_name'] = player_trophies.given_name.str.replace("not appl
 player_trophies['family_name'] = player_trophies.family_name.str.replace("not applicable" , "family name unknown")
 
 ## golden boot player
-st.markdown('who is the most player who won the golden boot in the world cup ?')
+st.subheader('History of world cup golden boot') 
 golden_boot =player_trophies[['fullname' , 'team_name' , 'tournament_id']][player_trophies['award_name']=='Golden Boot'].sort_values(by='tournament_id',ascending=False).reset_index().drop('index',axis=1, inplace=False)
 st.dataframe(golden_boot)
-figure3 = px.bar(golden_boot, x='fullname', y='tournament_id', color='team_name', title='Golden Boot Winners')
-st.plotly_chart(figure3)
 
 ## golden ball country
-most_country_golden_boot = golden_boot.team_name.value_counts().reset_index()
-st.markdown('which country has the most golden boot winners ?')
-st.dataframe(most_country_golden_boot)
-figure4 = px.bar(most_country_golden_boot, x='index', y='team_name', title='Golden Boot Winners countries')
-st.plotly_chart(figure4)
+most_country_golden_boot = golden_boot.team_name.value_counts().reset_index().head(5)
+st.subheader('which country has the most golden boot winners ?')
+col1 , col2 = st.columns([1,2])
+with col1:
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.dataframe(most_country_golden_boot)
+with col2:
+    figure4 = px.bar(most_country_golden_boot, x='index', y='team_name')
+    st.plotly_chart(figure4)
 
 ## golden glove
 golden_Glove =player_trophies[[ 'fullname','team_name' , 'tournament_id']][player_trophies['award_name']=='Golden Glove'].sort_values(by='tournament_id',ascending=False).reset_index().drop('index',axis=1, inplace=False)
-st.markdown('who is the most player who won the golden glove in the world cup ?')
+st.subheader('History of world cup golden glove')
 st.dataframe(golden_Glove)
-figure5 = px.bar(golden_Glove, x='fullname', y='tournament_id', color='team_name', title='Golden Glove Winners')
-st.plotly_chart(figure5)
+
+st.subheader('which country has the most golden glove winners ?')
 most_country_golden_Glove = golden_Glove.team_name.value_counts().reset_index()
-figure6 = px.bar(most_country_golden_Glove, x='index', y='team_name', title='Golden Glove Winners countries')
-st.plotly_chart(figure6)
+col1 , col2 = st.columns([1,2])
+with col1:
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.dataframe(most_country_golden_Glove)
+with col2:
+    figure6 = px.bar(most_country_golden_Glove, x='index', y='team_name')
+    st.plotly_chart(figure6)
 
 ## most young promising player
-st.markdown('who is the most young promising player in the world cup ?')
+st.subheader('History of world cup young promising player')
 young_player = player_trophies[['fullname' , 'team_name' , 'tournament_id']][player_trophies['award_name']=='Best Young Player'].sort_values(by='tournament_id',ascending=False).reset_index().drop('index',axis=1, inplace=False)
 st.dataframe(young_player)
-figure7 = px.bar(young_player, x='fullname', y='tournament_id', color='team_name', title='Best Young Player Winners')
-st.plotly_chart(figure7)
-most_country_young_player = young_player.team_name.value_counts().reset_index()
-figure8 = px.bar(most_country_young_player, x='index', y='team_name', title='Best Young Player Winners countries')
-st.plotly_chart(figure8)
 
+st.subheader('which country has the most young promising player ?')
+
+col1 , col2 = st.columns([1,2])
+with col1:
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    most_country_young_player = young_player.team_name.value_counts().reset_index()
+    st.dataframe(most_country_young_player)
+with col2:
+
+
+    figure8 = px.bar(most_country_young_player, x='index', y='team_name')
+    st.plotly_chart(figure8)
 
 
 
