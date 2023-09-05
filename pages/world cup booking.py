@@ -58,10 +58,10 @@ most_country_rc = red_cards['team_name_y' ].value_counts().reset_index().head(10
 ## plotting data
 st.subheader('who is the most countries have yellow cards')
 st.dataframe(yellow_cards)
-figure10 = px.funnel(most_country_yc , x="index" ,y = "team_name_y"  )
+figure10 = px.histogram(most_country_yc , x="index" ,y = "team_name_y"  )
 st.plotly_chart(figure10)
 
 st.subheader('who is the most countries have red cards')
 st.dataframe(red_cards)
-figure11 = px.funnel(most_country_rc , x="index" ,y = "team_name_y")
+figure11 = px.histogram(most_country_rc , x="index" ,y = "team_name_y")
 st.plotly_chart(figure11)
