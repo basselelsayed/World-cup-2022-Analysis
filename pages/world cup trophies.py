@@ -62,7 +62,7 @@ with col1:
     st.write("")
     st.dataframe(most_country_golden_boot)
 with col2:
-    figure4 = px.bar(most_country_golden_boot, x='index', y='team_name')
+    figure4 = px.bar(most_country_golden_boot, x='count', y='team_name')
     st.plotly_chart(figure4)
 
 ## golden glove
@@ -81,7 +81,7 @@ with col1:
     st.write("")
     st.dataframe(most_country_golden_Glove)
 with col2:
-    figure6 = px.bar(most_country_golden_Glove, x='index', y='team_name')
+    figure6 = px.bar(most_country_golden_Glove, x='count', y='team_name')
     st.plotly_chart(figure6)
 
 ## most young promising player
@@ -103,7 +103,7 @@ with col1:
 with col2:
 
 
-    figure8 = px.bar(most_country_young_player, x='index', y='team_name')
+    figure8 = px.bar(most_country_young_player, x='count', y='team_name')
     st.plotly_chart(figure8)
 
 
