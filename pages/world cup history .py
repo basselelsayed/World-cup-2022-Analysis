@@ -178,7 +178,7 @@ with col1:
     st.write("")
     st.dataframe(table_1st)
 with col2:
-    first = px.bar(table_1st , x='index', y='Squad' )
+    first = px.bar(table_1st , x='count', y='Squad' )
     st.plotly_chart(first)
 
 ##2nd place
@@ -194,7 +194,7 @@ with col1:
     st.write("")
     st.dataframe(table_2nd)
 with col2:
-    second = px.bar(table_2nd , x='index', y='Squad' )
+    second = px.bar(table_2nd , x='count', y='Squad' )
     st.plotly_chart(second)
 
 
@@ -212,7 +212,7 @@ with col1:
     
     st.dataframe(table_3rd)
 with col2:
-    third = px.bar(table_3rd , x='index', y='Squad' )
+    third = px.bar(table_3rd , x='count', y='Squad' )
     st.plotly_chart(third)
 
 ##4th place
@@ -229,5 +229,5 @@ with col1:
     
     st.dataframe(table_4th)
 with col2:
-    fourth = px.bar(table_4th , x='index', y='Squad' , title='World Cup fourth place 1930-2018')
+    fourth = px.bar(table_4th , x='count', y='Squad' , title='World Cup fourth place 1930-2018')
     st.plotly_chart(fourth)
